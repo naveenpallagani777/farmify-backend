@@ -1,8 +1,10 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const FarmerRouter = require("./Router/FarmerRoutes");
 
 const app = express();
+app.use(express.json());
 
 mongoose.connect(process.env.DATABASE_URL)
 .then(()=> {
@@ -12,6 +14,7 @@ mongoose.connect(process.env.DATABASE_URL)
     })
 }).catch((err) => {
     console.log(err);
-})
+});
 
+app.use(FarmerRouter);
 
