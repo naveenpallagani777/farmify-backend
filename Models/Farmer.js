@@ -1,18 +1,14 @@
 const mongoose = require('mongoose');
 // farmer schema
-const FarmerSchema = mongoose.Schema({
+const farmerSchema = mongoose.Schema({
     userName : {
         type : String,
-        required : true
+        required : true,
+        unique : true
     },
     password : {
         type : String,
         required : true
-    },
-    phoneNumber : {
-        type: Number,
-        required : true,
-        unique : true
     },
     crops : [{
         type: mongoose.Schema.Types.ObjectId,
@@ -20,6 +16,38 @@ const FarmerSchema = mongoose.Schema({
     }]
 })
 
-// farmer model
-const FarmerModel = mongoose.model('Farmer',FarmerSchema);
-module.exports = {FarmerModel};
+const farmerModel = mongoose.model('Farmer',farmerSchema);
+
+// crop schema
+
+const cropSchema = mongoose.Schema({
+    name : {
+        type : String,
+        required : true
+    },
+    quantity : {
+        type : Number,
+        required : true
+    },
+    units : {
+        type : String,
+        required : true
+    },
+    rating : {
+        type : Number,
+        default : 0
+    },
+    price : {
+        type : Number,
+        required : true
+    },
+    farmer : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Farmer',
+        required : true
+    }
+})
+
+const cropModel = mongoose.model('Crop',cropSchema);
+
+module.exports = {farmerModel,cropModel};
