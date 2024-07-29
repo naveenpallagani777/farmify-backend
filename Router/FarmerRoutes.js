@@ -1,5 +1,5 @@
 const express = require('express');
-const Controls = require("../Controllers/FarmerControllers");
+const Controls = require("../Controllers/LoginSignup");
 
 const FarmerRouter = express.Router();
 
