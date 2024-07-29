@@ -6,7 +6,7 @@ const createToken = (_id) => {
     return jwt.sign({_id},process.env.MESSAGE,{expiresIn:"3d"});
   }
 
-exports.FarmerLogin = async (req,res) => {
+exports.Login = async (req,res) => {
 
     try{
         let data;
@@ -24,7 +24,7 @@ exports.FarmerLogin = async (req,res) => {
 
 }
 
-exports.FarmerSignup = async (req,res) => {
+exports.Signup = async (req,res) => {
 
     try{
         console.log(req.body);

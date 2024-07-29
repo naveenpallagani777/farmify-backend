@@ -1,9 +1,14 @@
 const express = require('express');
 const Controls = require("../Controllers/LoginSignup");
+const FarmerControls = require("../Controllers/FarmerControllers");
 
-const FarmerRouter = express.Router();
+const Router = express.Router();
 
-FarmerRouter.post("/api/login",Controls.FarmerLogin);
-FarmerRouter.post("/api/signup",Controls.FarmerSignup);
+// login and signup controllers
+Router.post("/api/login",Controls.Login);
+Router.post("/api/signup",Controls.Signup);
 
-module.exports = FarmerRouter;
+// farmer controllers
+Router.post("/api/addCrop",FarmerControls.AddCrop);
+
+module.exports = Router;

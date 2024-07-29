@@ -32,6 +32,8 @@ FarmerSchema.statics.login = async function (data) {
         let flag = await bcrypt.compare(data.password,user.password);
         if (!flag) throw Error ("incorrect password");
 
+        user = await user.populate('crops');
+
         return user;
     }
 

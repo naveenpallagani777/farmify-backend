@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const FarmerRouter = require("./Router/FarmerRoutes");
+const Router = require("./Router/FarmerRoutes");
 
 const app = express();
 app.use(express.json());
@@ -16,5 +16,5 @@ mongoose.connect(process.env.DATABASE_URL)
     console.log(err);
 });
 
-app.use(FarmerRouter);
+app.use(Router);
 
